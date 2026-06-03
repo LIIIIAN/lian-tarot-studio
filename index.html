@@ -442,14 +442,19 @@
       display: none;
     }
 
-    .glass-card > *,
-    .service > *,
-    .mini-card > *,
-    .price-card > *,
-    .feedback-card > *,
-    .modal-card > * {
+    .glass-card > :not(.card-star),
+    .service > :not(.card-star),
+    .mini-card > :not(.card-star),
+    .price-card > :not(.card-star),
+    .feedback-card > :not(.card-star),
+    .modal-card > :not(.card-star) {
       position: relative;
       z-index: 1;
+    }
+
+    .card-star {
+      position: absolute;
+      z-index: 0;
     }
 
     .glass-card:hover .card-star,
@@ -1106,6 +1111,11 @@
       border-bottom: 0;
     }
 
+    .price-card > .price-row {
+      padding-bottom: 0;
+      border-bottom: 0;
+    }
+
     .price-row span:first-child {
       color: rgba(213, 208, 197, 0.9);
     }
@@ -1161,8 +1171,9 @@
       position: relative;
       overflow: hidden;
       min-height: 104px;
-      display: grid;
-      place-items: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       padding: 20px 16px;
       border: 1px solid rgba(212, 175, 55, 0.3);
       border-radius: 18px;
